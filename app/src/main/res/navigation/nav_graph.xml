@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/inputGradeFragment">
+
+    <fragment
+        android:id="@+id/inputGradeFragment"
+        android:name="edu.renatoarg.uniredentor.ui.inputgrade.InputGradeFragment"
+        android:label="fragment_input_grade"
+        tools:layout="@layout/fragment_input_grade" >
+        <action
+            android:id="@+id/action_inputGradeFragment_to_approvedFragment"
+            app:destination="@id/approvedFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right" />
+        <action
+            android:id="@+id/action_inputGradeFragment_to_failFragment"
+            app:destination="@id/failFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/approvedFragment"
+        android:name="edu.renatoarg.uniredentor.ui.approved.ApprovedFragment"
+        android:label="fragment_approved"
+        tools:layout="@layout/fragment_approved" />
+    <fragment
+        android:id="@+id/failFragment"
+        android:name="edu.renatoarg.uniredentor.ui.fail.FailFragment"
+        android:label="fragment_fail"
+        tools:layout="@layout/fragment_fail" />
+</navigation>
