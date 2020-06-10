@@ -28,7 +28,6 @@ class InputGradeFragment : Fragment(R.layout.fragment_input_grade) {
             }
         })
 
-
         submit.setOnClickListener {
             viewModel.checkGrade(gradle.text.toString().toInt())
         }

@@ -4,8 +4,9 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import edu.renatoarg.uniredentor.model.GradeRepository
 
-class InputGradeViewModel : ViewModel(), LifecycleObserver {
+class InputGradeViewModel(val repository: GradeRepository) : ViewModel(), LifecycleObserver {
 
     private val liveData = MutableLiveData<InputGradeState>()
 
@@ -14,9 +15,9 @@ class InputGradeViewModel : ViewModel(), LifecycleObserver {
     }
 
     fun checkGrade(grade: Int) {
-        when (grade) {
-            in 0..6 -> liveData.value = InputGradeState.Fail
-            in 7..Int.MAX_VALUE -> liveData.value = InputGradeState.Approved
+        when (repository.checkApproval(grade)) {
+            true -> liveData.value = InputGradeState.Approved
+            false -> liveData.value = InputGradeState.Fail
         }
         liveData.value = InputGradeState.Clear
     }
