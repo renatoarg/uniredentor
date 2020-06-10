@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">UniRedentor</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="digite_sua_nota">Digite sua nota</string>
+    <string name="avaliar">Avaliar</string>
+    <string name="aprovado">Parabéns, você foi aprovado!</string>
+    <string name="reprovado">Infelizmente você foi reprovado.</string>
+</resources>
