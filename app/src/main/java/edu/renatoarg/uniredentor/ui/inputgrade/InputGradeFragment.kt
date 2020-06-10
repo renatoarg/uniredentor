@@ -20,10 +20,11 @@ class InputGradeFragment : Fragment(R.layout.fragment_input_grade) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getLiveData().observe(viewLifecycleOwner, Observer { grade ->
-            when (grade) {
-                in 0..6 -> findNavController().navigate(R.id.action_inputGradeFragment_to_failFragment)
-                in 7..Int.MAX_VALUE -> findNavController().navigate(R.id.action_inputGradeFragment_to_approvedFragment)
+        viewModel.getLiveData().observe(viewLifecycleOwner, Observer { state ->
+            when(state) {
+                is InputGradeState.Approved -> findNavController().navigate(R.id.action_inputGradeFragment_to_approvedFragment)
+                is InputGradeState.Fail -> findNavController().navigate(R.id.action_inputGradeFragment_to_failFragment)
+                is InputGradeState.Clear -> gradle.text.clear()
             }
         })
 

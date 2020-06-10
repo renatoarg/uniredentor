@@ -7,15 +7,18 @@ import androidx.lifecycle.ViewModel
 
 class InputGradeViewModel : ViewModel(), LifecycleObserver {
 
-    private val liveData = MutableLiveData<Int>()
+    private val liveData = MutableLiveData<InputGradeState>()
 
-    fun getLiveData() : LiveData<Int> {
+    fun getLiveData(): LiveData<InputGradeState> {
         return liveData
     }
 
     fun checkGrade(grade: Int) {
-        liveData.value = grade
-        liveData.value = -1
+        when (grade) {
+            in 0..6 -> liveData.value = InputGradeState.Fail
+            in 7..Int.MAX_VALUE -> liveData.value = InputGradeState.Approved
+        }
+        liveData.value = InputGradeState.Clear
     }
 
 }
